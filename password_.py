@@ -107,11 +107,11 @@ def getMasterPassword():
     btn= Button(window, text="Submit", command=checkPassword)
     btn.pack(pady=10)
     
-    def passwordVault();
-	for widget in window.winfo_children():
+def passwordVault();
+    for widget in window.winfo_children():
 	widget.destroy();
 	
-def addEntry():
+    def addEntry():
 	text1="Website"
 	text2="Website"
 	text3="Website"
@@ -120,15 +120,18 @@ def addEntry():
 	username = popUp(text2)
 	password = popUp(text3)
 	
-	window.geometry("750x350")
+	insert_fields = """INSERT INTO vault(website,username,password) 
+	VALUES(?,?,?)"""
 	
-	lbl = Label(window, text="Password Vault")
-	lbl.grid(column=1, padY=10)
+    window.geometry("750x350")
 	
-	btn = Button(window, text="+", command=addEntry)
-	btn.grid(column=1, padY=10)
+    lbl = Label(window, text="Password Vault")
+    lbl.grid(column=1, padY=10)
+	
+    btn = Button(window, text="+", command=addEntry)
+    btn.grid(column=1, padY=10)
 
-	check = cursor.execute("SELECT * FROM masterpassword")
+check = cursor.execute("SELECT * FROM masterpassword")
 if check:
     loginScreen()
 else
