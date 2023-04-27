@@ -5,6 +5,24 @@ window = Tk()
 
 window.title("Password Vault") 
 
+def firstScreen():
+    window.geometry("250x150")
+
+    lbl= Label(window, text="Create Master Password")
+    lbl.config(anchor=CENTER)
+    lbl.pack()
+	
+    txt= Entry(window, width=20)
+    txt.pack()
+    txt.focus()
+
+    lbl1 = Label(window, text="Re-enter Password")
+    lbl1.pack()
+	
+    txt1= Entry(window, width=20)
+    txt1.pack()
+    txt1.focus()
+
 def loginScreen():
     window.geometry("250x100")
 
@@ -26,6 +44,7 @@ def loginScreen():
         if password == txt.get():
             passwordVault()
         else:
+	    txt.delete(0, 'end')
             lbl1.config(text="Wrong Password")
 
     btn= Button(window, text="Submit", command=checkPassword)
