@@ -71,7 +71,12 @@ def firstScreen():
 def savePassword():
 	if txt.get() == text1.get():
 	    sql = "DELETE FROM masterpassword WHERE id = 1"
+	
+	    cursor.execute(sql)
+	
   	    hasedPassword = hashPassword(txt.get().encode("utf-8"))
+	    key = str(uuid.uuid4().hex)
+	    recoveryKey=hashPassword(key.encode('urf-8'))
 	
 	    insert_password = """INSERT INTO masterpassword(password)
 	    VALUES(?) """
