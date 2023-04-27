@@ -110,6 +110,16 @@ def getMasterPassword():
     def passwordVault();
 	for widget in window.winfo_children():
 	widget.destroy();
+	
+def addEntry():
+	text1="Website"
+	text2="Website"
+	text3="Website"
+	
+	website = popUp(text1)
+	username = popUp(text2)
+	password = popUp(text3)
+	
 	window.geometry("750x350")
 	
 	lbl = Label(window, text="Password Vault")
@@ -118,7 +128,7 @@ def getMasterPassword():
 	btn = Button(window, text="+", command=addEntry)
 	btn.grid(column=1, padY=10)
 
-check = cursor.execute("SELECT * FROM masterpassword")
+	check = cursor.execute("SELECT * FROM masterpassword")
 if check:
     loginScreen()
 else
