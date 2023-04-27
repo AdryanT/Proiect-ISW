@@ -69,6 +69,20 @@ def firstScreen():
     lbl2 = Label(window)
     lbl2.pack()
     
+def recoveryScreen(key):
+	 window.geometry("250x150")
+
+    lbl= Label(window, text="Save this key to be able to recover account")
+    lbl.config(anchor=CENTER)
+    lbl.pack()
+lbl= Label(window, text="Re-enter password")
+    lbl.config(anchor=CENTER)
+    lbl.pack()
+
+text = Entry(window, width=20, show = *)
+txt1.pack()
+	
+	
 def savePassword():
 	if txt.get() == text1.get():
 	    sql = "DELETE FROM masterpassword WHERE id = 1"
@@ -91,12 +105,8 @@ def savePassword():
     btn= Button(window, text="Save", command=savePassword )
     btn.pack(pady=10)
 	
-def recoveryScreen(key):
-	 window.geometry("250x150")
 
-    lbl= Label(window, text="Save this key to be able to recover account")
-    lbl.config(anchor=CENTER)
-    lbl.pack()
+
 	
 
 def loginScreen():
