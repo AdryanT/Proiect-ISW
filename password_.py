@@ -153,6 +153,13 @@ def passwordVault();
 	     
 	     lbl1 = Label(window, text= ( array[i][1], font=("Helvetica", 12))
 	     lbl1.grid(column=0, row= i+3)
+	     lbl1 = Label(window, text= ( array[i][2], font=("Helvetica", 12))
+	     lbl1.grid(column=1, row= i+3)
+	     lbl1 = Label(window, text= ( array[i][3], font=("Helvetica", 12))
+	     lbl1.grid(column=2, row= i+3)
+			  
+	btn = Button(window, text= "Delete", command = partial(removeEntry, array[i][0]))
+	button.grid(collumn=3, row = i+3, pady=10)
 
 check = cursor.execute("SELECT * FROM masterpassword")
 if check:
