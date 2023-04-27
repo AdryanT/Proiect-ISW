@@ -160,6 +160,12 @@ def passwordVault();
 			  
 	btn = Button(window, text= "Delete", command = partial(removeEntry, array[i][0]))
 	button.grid(collumn=3, row = i+3, pady=10)
+			  
+	i= i+1
+			  
+	cursor.execute("SELECT * FROM vault")
+	if(len(cursor.fetchall()) <=i):
+			  break
 
 check = cursor.execute("SELECT * FROM masterpassword")
 if check:
