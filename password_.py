@@ -6,7 +6,7 @@ with sqlite3.connect("password_vault.db") as db:
 	
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS masterpassword(
-id INTEGER PRIMARY KEY
+id INTEGER PRIMARY KEY,
 password TEXT NOT NULL);
 """)
 
@@ -91,5 +91,10 @@ def getMasterPassword():
 	lbl.config(anchor=CENTER)
     	lbl.pack()
 
-firstScreen()
+check = cursor.execute("SELECT * FROM masterpassword")
+if check:
+    loginScreen()
+else
+    firstScreen()
+
 window.mainloop()
