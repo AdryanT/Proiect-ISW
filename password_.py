@@ -66,11 +66,15 @@ def loginScreen():
     txt.pack()
     txt.focus()
 
+def getMasterPassword():
+	checkHashedPassword = txt.get()
+	cursor.execute("SELECT * FROM masterpassword WHERE id = 1 AND password = ?",[(checkHashedPassword)])
+	return cursor.fetchall()
 
     def checkPassword():
-        password ="test"
+        match = getMasterPassword()
 
-        if password == txt.get():
+        if match:
             passwordVault()
         else:
 	    txt.delete(0, 'end')
