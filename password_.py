@@ -2,6 +2,15 @@ import sqlite3, hashlib
 from tkinter import *
 from tkinter import simpledialog
 from functools import partial
+import uuid
+import pyperclip
+import base64
+import os
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.backends import default_backend
+from cryptography.fernet import Fernet
+
 
 #Database Code
 with sqlite3.connect("password_vault.db") as db:
