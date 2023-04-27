@@ -17,6 +17,11 @@ window = Tk()
 
 window.title("Password Vault") 
 
+def hashPassword(input):
+	hash = hashlib.md5(intup)
+	hash = hash.hexdigest()
+	
+	return hash
 
 def firstScreen():
     window.geometry("250x150")
@@ -46,6 +51,9 @@ def savePassword():
 	    insert_password = """INSERT INTO masterpassword(password)
 	    VALUES(?) """
 	    cursor.execute(insert_password, [(hashedPassword)])
+	    db.commit()
+	
+ 	    passwordVault()
 	else:
 	    lbl2.config(text="Passwords do not match")
 
