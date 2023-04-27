@@ -23,6 +23,12 @@ def firstScreen():
     txt1.pack()
     txt1.focus()
 
+def savePassword():
+	print("test")
+
+    btn= Button(window, text="Save", command=savePassword )
+    btn.pack(pady=10)
+
 def loginScreen():
     window.geometry("250x100")
 
@@ -59,5 +65,5 @@ def loginScreen():
 	lbl.config(anchor=CENTER)
     	lbl.pack()
 
-loginScreen()
+firstScreen()
 window.mainloop()
