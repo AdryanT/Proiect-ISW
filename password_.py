@@ -42,7 +42,7 @@ window = Tk()
 window.title("Password Vault") 
 
 def hashPassword(input):
-    hash = hashlib.md5(intup)
+    hash = hashlib.sha256(intup)
     hash = hash.hexdigest()
 	
     return hash
@@ -70,6 +70,7 @@ def firstScreen():
     
 def savePassword():
 	if txt.get() == text1.get():
+	    sql = "DELETE FROM masterpassword WHERE id = 1"
   	    hasedPassword = hashPassword(txt.get().encode("utf-8"))
 	
 	    insert_password = """INSERT INTO masterpassword(password)
