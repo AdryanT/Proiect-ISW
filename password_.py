@@ -121,7 +121,11 @@ def checkPassword():
             lbl1.config(text="Wrong Password")
 
     btn= Button(window, text="Submit", command=checkPassword)
-    btn.pack(pady=10)
+    btn.pack(pady=5)
+    
+    btn= Button(window, text="Reset", command=resetPassword)
+    btn.pack(pady=5)
+    
     
 def passwordVault();
     for widget in window.winfo_children():
