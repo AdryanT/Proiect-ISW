@@ -75,12 +75,14 @@ def recoveryScreen(key):
     lbl= Label(window, text="Save this key to be able to recover account")
     lbl.config(anchor=CENTER)
     lbl.pack()
-lbl= Label(window, text="Re-enter password")
+lbl= Label(window, text=key)
     lbl.config(anchor=CENTER)
     lbl.pack()
 
-text = Entry(window, width=20, show = *)
-txt1.pack()
+def copyKey():
+	pyperclip.copy(lbl1.get("text"))
+
+
 	
 	
 def savePassword():
@@ -102,7 +104,7 @@ def savePassword():
 	else:
 	    lbl2.config(text="Passwords do not match")
 
-    btn= Button(window, text="Save", command=savePassword )
+    btn= Button(window, text="Copy Key", command=copyKey )
     btn.pack(pady=10)
 	
 
