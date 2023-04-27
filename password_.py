@@ -70,6 +70,32 @@ def firstScreen():
 
     lbl2 = Label(window)
     lbl2.pack()
+
+def savePassword():
+        if txt.get() == txt1.get():
+            sql = "DELETE FROM masterpassword WHERE id = 1"
+
+            cursor.execute(sql)
+
+            hashedPassword = hashPassword(txt.get().encode('utf-8'))
+            key = str(uuid.uuid4().hex)
+            recoveryKey = hashPassword(key.encode('utf-8'))
+
+            global encryptionKey
+            encryptionKey = base64.urlsafe_b64encode(kdf.derive(txt.get().encode()))
+            
+            insert_password = """INSERT INTO masterpassword(password, recoveryKey)
+            VALUES(?, ?) """
+            cursor.execute(insert_password, ((hashedPassword), (recoveryKey)))
+            db.commit()
+
+            recoveryScreen(key)
+        else:
+            lbl.config(text="Passwords dont match")
+
+    btn = Button(window, text="Save", command=savePassword)
+    btn.pack(pady=5)
+
     
 def recoveryScreen(key):
 	for widget in window.winfo_children():
@@ -116,14 +142,17 @@ def getRecoveryKey():
 	cursor.execute('SELECT * FROM masterpassword WHERE id=1 AND recoveryKey = ?',[(recoveryKeyCheck)])
 	return cursor.fetchall()
 	
+def checkRecoveryKey():
+	checked= getRecoveryKey()
 	
-	   btn= Button(window, text="Done", command=done )
-    btn.pack(pady=10)
+	if checked:
+		firstTimeScreen()
+	else:
+		txt.delete(0,'end')
+		lbl1.config(text="Wrong Key")
 
-def done():
-	vaultScreen()
 
-    btn= Button(window, text="Done", command=done )
+    btn= Button(window, text="Chek Key", command=checkRecoveryKey )
     btn.pack(pady=10)
   
 	
