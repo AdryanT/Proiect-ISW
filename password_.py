@@ -24,7 +24,9 @@ password TEXT NOT NULL);
 #Create PopUP
 def popUp(text):
 	answer= simpledialog.askstring("intput string", text)
-	print(answer)
+	
+	return answer
+	
 #Window
 window = Tk()
 
@@ -110,11 +112,11 @@ def getMasterPassword():
 	widget.destroy();
 	window.geometry("750x350")
 	
-	popUp("Whats your name")
-	
 	lbl = Label(window, text="Password Vault")
-	lbl.config(anchor=CENTER)
-    	lbl.pack()
+	lbl.grid(column=1, padY=10)
+	
+	btn = Button(window, text="+", command=addEntry)
+	btn.grid(column=1, padY=10)
 
 check = cursor.execute("SELECT * FROM masterpassword")
 if check:
