@@ -41,7 +41,11 @@ def firstScreen():
     
 def savePassword():
 	if txt.get() == text1.get():
-	    pass
+  	    hasedPassword = txt.get()
+	
+	    insert_password = """INSERT INTO masterpassword(password)
+	    VALUES(?) """
+	    cursor.execute(insert_password, [(hashedPassword)])
 	else:
 	    lbl2.config(text="Passwords do not match")
 
