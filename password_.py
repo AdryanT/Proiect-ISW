@@ -21,6 +21,10 @@ username TEXT NOT NULL,
 password TEXT NOT NULL);
 """)
 
+#Create PopUP
+def popUp(text):
+	answer= simpledialog.askstring("intput string", text)
+	print(answer)
 #Window
 window = Tk()
 
@@ -105,6 +109,8 @@ def getMasterPassword():
 	for widget in window.winfo_children():
 	widget.destroy();
 	window.geometry("750x350")
+	
+	popUp("Whats your name")
 	
 	lbl = Label(window, text="Password Vault")
 	lbl.config(anchor=CENTER)
