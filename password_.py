@@ -23,9 +23,9 @@ password TEXT NOT NULL);
 
 #Create PopUP
 def popUp(text):
-	answer= simpledialog.askstring("intput string", text)
+    answer= simpledialog.askstring("intput string", text)
 	
-	return answer
+    return answer
 	
 #Window
 window = Tk()
@@ -33,10 +33,10 @@ window = Tk()
 window.title("Password Vault") 
 
 def hashPassword(input):
-	hash = hashlib.md5(intup)
-	hash = hash.hexdigest()
+    hash = hashlib.md5(intup)
+    hash = hash.hexdigest()
 	
-	return hash
+    return hash
 
 def firstScreen():
     window.geometry("250x150")
@@ -126,6 +126,12 @@ def passwordVault();
 	cursor.execute(insert_fields, (website,username, password))
 	db.commit()
 	
+	passwordVault()
+	
+    def removeEntry(input):
+        cursor.execute("DELETE FROM vault WHERE id = ?", (input,))
+	db.commit()
+
     window.geometry("750x350")
 	
     lbl = Label(window, text="Password Vault")
