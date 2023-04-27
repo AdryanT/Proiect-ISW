@@ -1,5 +1,8 @@
 import sqlite3, hashlib
 from tkinter import *
+from tkinter import simpledialog
+from functools import partial
+
 #Database
 with sqlite3.connect("password_vault.db") as db:
 	cursor= db.cursor()
@@ -10,7 +13,13 @@ id INTEGER PRIMARY KEY,
 password TEXT NOT NULL);
 """)
 
-
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS vault(
+id INTEGER PRIMARY KEY,
+website TEXT NOT NULL,
+username TEXT NOT NULL,
+password TEXT NOT NULL);
+""")
 
 #Window
 window = Tk()
