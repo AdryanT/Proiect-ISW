@@ -49,6 +49,8 @@ def hashPassword(input):
     return hash
 
 def firstScreen():
+	for widget in window.winfo_children():
+		widget.destroy()
     window.geometry("250x150")
 
     lbl= Label(window, text="Create Master Password")
@@ -70,8 +72,11 @@ def firstScreen():
     lbl2.pack()
     
 def recoveryScreen(key):
+	for widget in window.winfo_children():
+		widget.destroy()
+		
+		
 	 window.geometry("250x150")
-
     lbl= Label(window, text="Save this key to be able to recover account")
     lbl.config(anchor=CENTER)
     lbl.pack()
@@ -81,29 +86,6 @@ lbl= Label(window, text=key)
 
 def copyKey():
 	pyperclip.copy(lbl1.get("text"))
-
-	
-def savePassword():
-	if txt.get() == text1.get():
-	    sql = "DELETE FROM masterpassword WHERE id = 1"
-	
-	    cursor.execute(sql)
-	
-  	    hasedPassword = hashPassword(txt.get().encode("utf-8"))
-	    key = str(uuid.uuid4().hex)
-	    recoveryKey=hashPassword(key.encode('urf-8'))
-	
-	    insert_password = """INSERT INTO masterpassword(password, recoveryKey)
-	    VALUES(?, ?) """
-	    cursor.execute(insert_password, ((hashedPassword),(recoveryKey)))
-	    db.commit()
-	
- 	    recoveryScreen()
-	else:
-	    lbl2.config(text="Passwords do not match")
-
-    btn= Button(window, text="Copy Key", command=copyKey )
-    btn.pack(pady=10)
 
 def done():
 	vaultScreen()
