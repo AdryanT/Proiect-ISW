@@ -94,6 +94,37 @@ def done():
     btn.pack(pady=10)
 
 def resetScreen():
+	for widget in window.winfo_children():
+		widget.destroy()
+		
+		
+	 window.geometry("250x150")
+    lbl= Label(window, text="Enter recovery key")
+    lbl.config(anchor=CENTER)
+    lbl.pack()
+
+ txt= Entry(window, width=20)
+    txt.pack()
+    txt.focus()
+
+lbl= Label(window)
+    lbl.config(anchor=CENTER)
+    lbl.pack()
+
+def getRecoveryKey():
+	recoveryKeyCheck= hashPassword(string(text.get()).encode('utf-8'))
+	cursor.execute('SELECT * FROM masterpassword WHERE id=1 AND recoveryKey = ?',[(recoveryKeyCheck)])
+	return cursor.fetchall()
+	
+	
+	   btn= Button(window, text="Done", command=done )
+    btn.pack(pady=10)
+
+def done():
+	vaultScreen()
+
+    btn= Button(window, text="Done", command=done )
+    btn.pack(pady=10)
   
 	
 def loginScreen():
@@ -109,6 +140,10 @@ def loginScreen():
     txt= Entry(window, width=20, show="*")
     txt.pack()
     txt.focus()
+
+  lbl= Label(window)
+  lbl1.config(anchor=CENTER)
+  lbl1.pack(side=TOP)
 def getMasterPassword():
 	checkMasterPassword = hashPassword(txt.get().encode("utf-8"))
 	cursor.execute("SELECT * FROM masterpassword WHERE id= 1 AND password = ?",[(chechHashedPassword)])
