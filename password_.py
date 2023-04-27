@@ -22,9 +22,12 @@ def firstScreen():
     txt1= Entry(window, width=20)
     txt1.pack()
     txt1.focus()
-
+    
 def savePassword():
-	print("test")
+	if txt.get() == text1.get():
+	    pass
+	else:
+	    lbl.config(text="Passwords do not match")
 
     btn= Button(window, text="Save", command=savePassword )
     btn.pack(pady=10)
