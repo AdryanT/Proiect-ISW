@@ -19,7 +19,8 @@ with sqlite3.connect("password_vault.db") as db:
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS masterpassword(
 id INTEGER PRIMARY KEY,
-password TEXT NOT NULL);
+password TEXT NOT NULL),
+recoveryKey TEXT NOT NULL);
 """)
 
 cursor.execute("""
@@ -78,9 +79,9 @@ def savePassword():
 	    key = str(uuid.uuid4().hex)
 	    recoveryKey=hashPassword(key.encode('urf-8'))
 	
-	    insert_password = """INSERT INTO masterpassword(password)
+	    insert_password = """INSERT INTO masterpassword(password, recoveryKey)
 	    VALUES(?) """
-	    cursor.execute(insert_password, [(hashedPassword)])
+	    cursor.execute(insert_password, ((hashedPassword),(recoveryKey)))
 	    db.commit()
 	
  	    passwordVault()
