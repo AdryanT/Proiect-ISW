@@ -24,7 +24,7 @@ def loginScreen():
         password ="test"
 
         if password == txt.get():
-            print("Right Password")
+            passwordVault()
         else:
             lbl1.config(text="Wrong Password")
 
@@ -34,6 +34,11 @@ def loginScreen():
     def passwordVault();
 	for widget in window.winfo_children():
 	widget.destroy();
+	window.geometry("750x350")
+	
+	lbl = Label(window, text="Password Vault")
+	lbl.config(anchor=CENTER)
+    	lbl.pack()
 
 loginScreen()
 window.mainloop()
