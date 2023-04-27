@@ -1,9 +1,22 @@
 import sqlite3, hashlib
 from tkinter import *
+#Database
+with sqlite3.connect("password_vault.db") as db:
+	cursor= db.cursor()
+	
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS masterpassword(
+id INTEGER PRIMARY KEY
+password TEXT NOT NULL);
+""")
 
+
+
+#Window
 window = Tk()
 
 window.title("Password Vault") 
+
 
 def firstScreen():
     window.geometry("250x150")
@@ -22,12 +35,15 @@ def firstScreen():
     txt1= Entry(window, width=20)
     txt1.pack()
     txt1.focus()
+
+    lbl2 = Label(window)
+    lbl2.pack()
     
 def savePassword():
 	if txt.get() == text1.get():
 	    pass
 	else:
-	    lbl.config(text="Passwords do not match")
+	    lbl2.config(text="Passwords do not match")
 
     btn= Button(window, text="Save", command=savePassword )
     btn.pack(pady=10)
