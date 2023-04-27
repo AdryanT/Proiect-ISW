@@ -46,7 +46,7 @@ def firstScreen():
     
 def savePassword():
 	if txt.get() == text1.get():
-  	    hasedPassword = txt.get()
+  	    hasedPassword = hashPassword(txt.get().encode("utf-8"))
 	
 	    insert_password = """INSERT INTO masterpassword(password)
 	    VALUES(?) """
@@ -74,12 +74,15 @@ def loginScreen():
     txt.pack()
     txt.focus()
 def getMasterPassword():
-	chechMasterPassword = txt.get()
+	checkMasterPassword = hashPassword(txt.get().encode("utf-8"))
 	cursor.execute("SELECT * FROM masterpassword WHERE id= 1 AND password = ?",[(chechHashedPassword)])
+	print(checkhasedPassword)
 	return cursor.fetchall()
 
     def checkPassword():
         match = getMasterPassword()
+
+	print(match)
 
         if match:
             passwordVault()
