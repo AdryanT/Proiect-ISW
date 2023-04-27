@@ -30,6 +30,10 @@ def loginScreen():
 
     btn= Button(window, text="Submit", command=checkPassword)
     btn.pack(pady=10)
+    
+    def passwordVault();
+	for widget in window.winfo_children():
+	widget.destroy();
 
 loginScreen()
 window.mainloop()
