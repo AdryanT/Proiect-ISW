@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import simpledialog
 from functools import partial
 
-#Database
+#Database Code
 with sqlite3.connect("password_vault.db") as db:
 	cursor= db.cursor()
 	
@@ -93,7 +93,7 @@ def getMasterPassword():
 	cursor.execute("SELECT * FROM masterpassword WHERE id= 1 AND password = ?",[(chechHashedPassword)])
 	return cursor.fetchall()
 
-    def checkPassword():
+def checkPassword():
         match = getMasterPassword()
 
 	
@@ -122,6 +122,9 @@ def passwordVault();
 	
 	insert_fields = """INSERT INTO vault(website,username,password) 
 	VALUES(?,?,?)"""
+	
+	cursor.execute(insert_fields, (website,username, password))
+	db.commit()
 	
     window.geometry("750x350")
 	
