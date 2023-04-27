@@ -30,14 +30,14 @@ def firstScreen():
     lbl.config(anchor=CENTER)
     lbl.pack()
 	
-    txt= Entry(window, width=20)
+    txt= Entry(window, width=20, show="*")
     txt.pack()
     txt.focus()
 
     lbl1 = Label(window, text="Re-enter Password")
     lbl1.pack()
 	
-    txt1= Entry(window, width=20)
+    txt1= Entry(window, width=20, show="*")
     txt1.pack()
     txt1.focus()
 
@@ -70,19 +70,18 @@ def loginScreen():
     lbl1 = Label(window)
     lbl1.pack()
 
-    txt= Entry(window, width=20)
+    txt= Entry(window, width=20, show="*")
     txt.pack()
     txt.focus()
 def getMasterPassword():
 	checkMasterPassword = hashPassword(txt.get().encode("utf-8"))
 	cursor.execute("SELECT * FROM masterpassword WHERE id= 1 AND password = ?",[(chechHashedPassword)])
-	print(checkhasedPassword)
 	return cursor.fetchall()
 
     def checkPassword():
         match = getMasterPassword()
 
-	print(match)
+	
 
         if match:
             passwordVault()
