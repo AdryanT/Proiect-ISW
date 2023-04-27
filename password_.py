@@ -93,6 +93,9 @@ def done():
     btn= Button(window, text="Done", command=done )
     btn.pack(pady=10)
 
+def resetScreen():
+  
+	
 def loginScreen():
     window.geometry("250x100")
 
@@ -119,7 +122,10 @@ def checkPassword():
         else:
 	    txt.delete(0, 'end')
             lbl1.config(text="Wrong Password")
-
+  def resetPassword():
+	resetScreen()
+	
+	
     btn= Button(window, text="Submit", command=checkPassword)
     btn.pack(pady=5)
     
