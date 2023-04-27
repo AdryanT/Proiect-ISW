@@ -94,7 +94,7 @@ def getMasterPassword():
 	return cursor.fetchall()
 
 def checkPassword():
-        match = getMasterPassword()
+    match = getMasterPassword()
 
 	
 
@@ -139,6 +139,9 @@ def passwordVault();
 	
     btn = Button(window, text="+", command=addEntry)
     btn.grid(column=1, padY=10)
+	
+    lbl= Label(window, text="Website")
+    lbl.grid(row=2,colum=0, padx=80
 
 check = cursor.execute("SELECT * FROM masterpassword")
 if check:
