@@ -82,8 +82,6 @@ lbl= Label(window, text=key)
 def copyKey():
 	pyperclip.copy(lbl1.get("text"))
 
-
-	
 	
 def savePassword():
 	if txt.get() == text1.get():
@@ -106,10 +104,12 @@ def savePassword():
 
     btn= Button(window, text="Copy Key", command=copyKey )
     btn.pack(pady=10)
-	
 
+def done():
+	vaultScreen()
 
-	
+    btn= Button(window, text="Done", command=done )
+    btn.pack(pady=10)
 
 def loginScreen():
     window.geometry("250x100")
@@ -131,8 +131,6 @@ def getMasterPassword():
 
 def checkPassword():
     match = getMasterPassword()
-
-	
 
         if match:
             passwordVault()
