@@ -80,16 +80,24 @@ def savePassword():
 	    recoveryKey=hashPassword(key.encode('urf-8'))
 	
 	    insert_password = """INSERT INTO masterpassword(password, recoveryKey)
-	    VALUES(?) """
+	    VALUES(?, ?) """
 	    cursor.execute(insert_password, ((hashedPassword),(recoveryKey)))
 	    db.commit()
 	
- 	    passwordVault()
+ 	    recoveryScreen()
 	else:
 	    lbl2.config(text="Passwords do not match")
 
     btn= Button(window, text="Save", command=savePassword )
     btn.pack(pady=10)
+	
+def recoveryScreen(key):
+	 window.geometry("250x150")
+
+    lbl= Label(window, text="Save this key to be able to recover account")
+    lbl.config(anchor=CENTER)
+    lbl.pack()
+	
 
 def loginScreen():
     window.geometry("250x100")
