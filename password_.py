@@ -142,6 +142,17 @@ def passwordVault();
 	
     lbl= Label(window, text="Website")
     lbl.grid(row=2,colum=0, padx=80
+	     
+
+   cursor.execute("SELECT * FROM vault")
+   if (cursor.fetchall() != None):
+	     i=0
+	     while True:
+	     cursor.execute("SELECT * FROM vault")
+	     array = cursor.fetchall()
+	     
+	     lbl1 = Label(window, text= ( array[i][1], font=("Helvetica", 12))
+	     lbl1.grid(column=0, row= i+3)
 
 check = cursor.execute("SELECT * FROM masterpassword")
 if check:
