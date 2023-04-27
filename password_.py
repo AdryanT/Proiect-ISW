@@ -12,11 +12,24 @@ def loginScreen():
     lbl.config(anchor=CENTER)
     lbl.pack()
 
+    lbl1 = Label(window)
+    lbl1.pack()
+
     txt= Entry(window, width=20)
     txt.pack()
-    
-    btn= Button(window, text="Submit")
-    btn.pack()
+    txt.focus()
+
+
+    def checkPassword():
+        password ="test"
+
+        if password == txt.get():
+            print("Right Password")
+        else:
+            lbl1.config(text="Wrong Password")
+
+    btn= Button(window, text="Submit", command=checkPassword)
+    btn.pack(pady=10)
 
 loginScreen()
 window.mainloop()
