@@ -11,6 +11,24 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.backends import default_backend
 from cryptography.fernet import Fernet
 
+backend = default_backend()
+salt = b'2444'
+
+kdf = PBKDF2HMAC(
+    algorithm=hashes.SHA256(),
+    length=32,
+    salt=salt,
+    iterations=100000,
+    backend=backend
+)
+
+encryptionKey = 0
+
+def encrypt(message: bytes, key: bytes) -> bytes:
+    return Fernet(key).encrypt(message)
+
+def decrypt(message: bytes, token: bytes) -> bytes:
+    return Fernet(token).decrypt(message)
 
 #Database Code
 with sqlite3.connect("password_vault.db") as db:
